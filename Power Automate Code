@@ -1,0 +1,105 @@
+# This is the code for the submitt button in the QC Power App
+
+Set(
+    selectedSite,
+    DataCardValue14.Text
+);
+Set(
+    selectedScanner,
+    DataCardValue15.Text
+);
+Set(
+    inputAxialWater,
+    If(IsBlank(DataCardValue5.Text) || DataCardValue5.Text = "", 0, DataCardValue5.Text)
+);
+Set(
+    inputAxialSD,
+    If(IsBlank(DataCardValue6.Text) || DataCardValue6.Text = "", 0, DataCardValue6.Text)
+);
+Set(
+    inputHelicalWater,
+    If(IsBlank(DataCardValue7.Text) || DataCardValue7.Text = "", 0, Value(DataCardValue7.Text))
+);
+Set(
+    inputHelicalSD,
+    If(IsBlank(DataCardValue8.Text) || DataCardValue8.Text = "", 0, Value(DataCardValue8.Text))
+);
+
+
+Set(
+    lowerLimitAxialWater,
+    LookUp('Equipment List', Site = selectedSite && Scanner = selectedScanner).AxialWaterLL
+);
+Set(
+    upperLimitAxialWater,
+    LookUp('Equipment List', Site = selectedSite && Scanner = selectedScanner).AxialWaterUL
+);
+Set(
+    lowerLimitAxialSD,
+    LookUp('Equipment List', Site = selectedSite && Scanner = selectedScanner).AxialSDLL
+);
+Set(
+    upperLimitAxialSD,
+    LookUp('Equipment List', Site = selectedSite && Scanner = selectedScanner).AxialSDUL
+);
+Set(
+    lowerLimitHelicalWater,
+    LookUp('Equipment List', Site = selectedSite && Scanner = selectedScanner).HelicalWaterLL
+);
+Set(
+    upperLimitHelicalWater,
+    LookUp('Equipment List', Site = selectedSite && Scanner = selectedScanner).HelicalWaterUL
+);
+Set(
+    lowerLimitHelicalSD,
+    LookUp('Equipment List', Site = selectedSite && Scanner = selectedScanner).HelicalSDLL
+);
+Set(
+    upperLimitHelicalSD,
+    LookUp('Equipment List', Site = selectedSite && Scanner = selectedScanner).HelicalSDUL
+);
+
+Set(
+    submissionExists,
+    !IsBlank(
+        LookUp(
+            'CT Daily QC',
+            Date = DataCardValue2.SelectedDate && Scanner = DataCardValue15.Text && Site = DataCardValue14.Text
+        )
+    )
+);
+
+If(
+    submissionExists,
+    Notify("A submission already exists for this date and scanner.", NotificationType.Error),
+    If(
+        DataCardValue11.Selected.Value = "Open",
+        If(
+            IsBlank(DataCardValue1.Text) || IsBlank(DataCardValue2.SelectedDate) || IsBlank(DataCardValue7.Text) || IsBlank(DataCardValue8.Text),
+            Notify("Please fill out all required fields", NotificationType.Error),
+            If(
+                (Value(DataCardValue5.Text) < lowerLimitAxialWater || Value(DataCardValue5.Text) > upperLimitAxialWater) ||
+                (Value(DataCardValue6.Text) < lowerLimitAxialSD || Value(DataCardValue6.Text) > upperLimitAxialSD) ||
+                (Value(DataCardValue7.Text) < lowerLimitHelicalWater || Value(DataCardValue7.Text) > upperLimitHelicalWater) ||
+                (Value(DataCardValue8.Text) < lowerLimitHelicalSD || Value(DataCardValue8.Text) > upperLimitHelicalSD),
+                UpdateContext({ ShowConfirmationPopup: true }),
+                SubmitForm(Form1);
+                ResetForm(Form1);
+                Notify("Data submitted");
+                Navigate(HomeScreen)
+            )
+        ),
+        If(
+            IsBlank(DataCardValue1.Text) || IsBlank(DataCardValue2.SelectedDate),
+            Notify("Please fill out all required fields", NotificationType.Error),
+            SubmitForm(Form1);
+            ResetForm(Form1);
+            Notify("Data submitted");
+            Navigate(HomeScreen)
+        )
+    )
+)
+
+
+
+
