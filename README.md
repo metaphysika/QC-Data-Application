@@ -28,13 +28,13 @@ Power apps was a good choice for this project as we previously stored most of ou
 
 The application allows for scanners to be grouped into several regions and then easily navigating to the site specific scanner.
 
-![App Home Screen](screenshots/QC App Home Page.png)
+[![App Home Screen](screenshots/QC App Home Page.png)](https://github.com/metaphysika/QC-Data-Application/blob/main/screenshots/QC%20App%20Home%20Page.png)
 
-![Scanner Selection](screenshots/Scanner Selection Screen.png)
+[![Scanner Selection](screenshots/Scanner Selection Screen.png)](https://github.com/metaphysika/QC-Data-Application/blob/main/screenshots/Scanner%20Selection%20Screen.png)
 
 The data entry screen allows for staff to pick dates, enter if the scanner was open or not that day, enter data, and any additional notes. It has some required fields and also will alert staff it they are trying to submit data out of range. If so, they are instructed if they still want to submit to add a note explaining the value.
 
-![Data Entry](screenshots/QC Entry App Screenshot.png)
+[![Data Entry](screenshots/QC Entry App Screenshot.png)](https://github.com/metaphysika/QC-Data-Application/blob/main/screenshots/QC%20Entry%20App%20Screenshot.png)
 
 The application required me to find solutions to many interesting problems. One such was a way to have the submit button do an initial check on the value against the stored limits in a SharePoint list, make sure all required fields are filled in, notify the user if there are any issues before submitting. 
 
@@ -46,7 +46,7 @@ Lastly, the application also allows for editing previous submissions. This is us
 
 All the data is routed to a SharePoint list named CT Daily QC. This list will track all entries. It is also where the edit screen will pull values from.
 
-![ShaerPoint List](screenshots/Daily QC SharePoint List Table.png)
+![ShaerPoint List](https://github.com/metaphysika/QC-Data-Application/blob/main/screenshots/Daily%20QC%20SharePoint%20List%20Table.png)
 
 There is also an Equipment List in SharePoint that store the informatoin for scanner/site names and their limits that both Power Apps and Power Automate can access to do their checks.
 
@@ -62,6 +62,8 @@ This visualization made it easy to quickly see any days where values were out of
 
 ## Power Automate
 Lastly, I used Power Automate to monitor all entires through application. This flow monitors new items in a SharePoint list and checks if certain values exceed predefined limits. If any values exceed the limits or if a note is added, an email is sent to specified recipients with details of the submission.
+
+[![Alt text]()](https://github.com/metaphysika/QC-Data-Application/blob/main/screenshots/Power%20Automate%20Check%20QC%20Limits.png)
 
 The flow consists of two main sections:
 
