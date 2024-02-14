@@ -56,7 +56,7 @@ Poewr BI was a useful way for displaying the historical data visually. Power BI 
 
 The dashboard just needed some straight forward visualization; it just needed a way to show the daily values as a line chart for each measure. There were some interesting challenges with making the visualization a bit more useful, though. One was finding a way to dynamically display the range of acceptable values for each measure behind the line graph. I ended up finding a way to do so by using a combo visual with a bar graph to display the acceptable range of values behind the line with the measured values.
 
-![Dashboard](screenshots/CT QC Dashboard - Power BI.png)
+![Dashboard](https://github.com/metaphysika/QC-Data-Application/blob/main/screenshots/CT%20QC%20Dashboard%20-%20Power%20BI.png)
 
 This visualization made it easy to quickly see any days where values were out of range and also see any days where days were missed.
 
