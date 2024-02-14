@@ -38,7 +38,7 @@ The data entry screen allows for staff to pick dates, enter if the scanner was o
 
 The application required me to find solutions to many interesting problems. One such was a way to have the submit button do an initial check on the value against the stored limits in a SharePoint list, make sure all required fields are filled in, notify the user if there are any issues before submitting. 
 
-Here is an example of the code for just this submit button [Power Automate Code](Power Automate Code)
+Here is an example of the code for just this submit: ![Power Apps Code](https://github.com/metaphysika/QC-Data-Application/blob/main/Power%20Apps%20Code)
 
 Lastly, the application also allows for editing previous submissions. This is useful if staff is instructed to repeat any scans and needs to update values or just correct simple data entry errors that may have occured.
 
