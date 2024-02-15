@@ -74,6 +74,6 @@ The conditions in both sections compare the values from the trigger outputs with
 I also created a second flow that checks if sites forgot to do QC. This flow was interesting because it required me to find a way to check if the site was closed on the weekends and then not send alerts for weekend days.
 
 # Results
-This application has proven very useful. My team has been able to better track when sites have values out of range. We are then able to more quickly investigate if there is a prolem with the scanner that needs addressing. We also are seeing much better compliance with QC being done. If there are days that are missed, we are notified day of so we still have the chance to go and run the tests still on the same day. Lastly, we have had zero issues with data loss or file corruption like we were frequently having with the old method of using Excel files.
+This application has proven very useful. My team has been able to better track when sites have values out of range. We are then able to more quickly investigate if there is a problem with the scanner that needs addressing. We also are seeing much better compliance with QC being done. If there are days that are missed, we are notified day of so we still have the chance to go and run the tests still on the same day. Lastly, we have had zero issues with data loss or file corruption like we were frequently having with the old method of using Excel files.
 
 
